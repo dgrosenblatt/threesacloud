@@ -1,0 +1,459 @@
+  [1m[36m (9.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.9ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20141229190841)
+  [1m[35m (0.1ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamp` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /Users/drosenblatt/Documents/Launch_Academy/threesacloud/db/migrate/20141229190841_devise_create_users.rb:34)
+  [1m[36m (5.9ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20141229190841"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.5ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (3.6ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateWeathers (20141229200112)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (4.7ms)[0m  [1mCREATE TABLE "weathers" ("id" serial primary key, "city" character varying NOT NULL, "state" character varying NOT NULL, "date" timestamp NOT NULL, "conditions" character varying NOT NULL, "feel" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateWeathers (20141229200112)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (4.9ms)[0m  [1mCREATE TABLE "weathers" ("id" serial primary key, "city" character varying NOT NULL, "state" character varying NOT NULL, "date" timestamp NOT NULL, "conditions" character varying NOT NULL, "feel" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX  "index_weathers_on_city_and_date" ON "weathers"  ("city", "date")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20141229200112"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.6ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (3.7ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'weathers'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+
+
+Started GET "/" for ::1 at 2014-12-29 15:27:52 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomesController#index as HTML
+  Rendered homes/index.html.erb within layouts/application (0.9ms)
+DEPRECATION WARNING on line 275 of /Users/drosenblatt/.gem/ruby/2.0.0/gems/foundation-rails-5.5.0.0/vendor/assets/stylesheets/foundation/components/_global.scss:
+Assigning to global variable "$default-float" by default is deprecated.
+In future versions of Sass, this will create a new local variable.
+If you want to assign to the global variable, use "$default-float: left !global" instead.
+Note that this will be incompatible with Sass 3.2.
+
+
+DEPRECATION WARNING on line 276 of /Users/drosenblatt/.gem/ruby/2.0.0/gems/foundation-rails-5.5.0.0/vendor/assets/stylesheets/foundation/components/_global.scss:
+Assigning to global variable "$opposite-direction" by default is deprecated.
+In future versions of Sass, this will create a new local variable.
+If you want to assign to the global variable, use "$opposite-direction: right !global" instead.
+Note that this will be incompatible with Sass 3.2.
+
+
+DEPRECATION WARNING: The return value of index() will change from "false" to
+"null" in future versions of Sass. For compatibility, avoid using "== false" on
+the return value. For example, instead of "@if index(...) == false", just write
+"@if not index(...)".
+        on line  of /Users/drosenblatt/.gem/ruby/2.0.0/gems/foundation-rails-5.5.0.0/vendor/assets/stylesheets/foundation/_functions.scss, in `exports'
+        from line 341 of /Users/drosenblatt/.gem/ruby/2.0.0/gems/foundation-rails-5.5.0.0/vendor/assets/stylesheets/foundation/components/_global.scss
+        from line 5 of /Users/drosenblatt/.gem/ruby/2.0.0/gems/foundation-rails-5.5.0.0/vendor/assets/stylesheets/foundation/components/_grid.scss
+        from line 9 of /Users/drosenblatt/.gem/ruby/2.0.0/gems/foundation-rails-5.5.0.0/vendor/assets/stylesheets/foundation.scss
+        from line 1447 of /Users/drosenblatt/Documents/Launch_Academy/threesacloud/app/assets/stylesheets/foundation_and_overrides.scss
+
+Completed 200 OK in 5595ms (Views: 5595.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/foundation_and_overrides-972e2baca971fce24ea51fca63aba129.css?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/application-b6533a0fea76d8137c77d5fc8a79a688.css?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/jquery-ea2706bc2d0586731b7c00ec2cd0a414.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/jquery_ujs-99f13489684e179b71ca7517fb74318d.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation/foundation.accordion-1f0842192c6706aa6f2bad4fa91ce11c.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation/foundation-28dcfe122165ca87303a5e8bdacdaf4b.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation/foundation.alert-0048959f2011c4c8477208cd3319fef7.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation/foundation.abide-40a8b7cb322912e042710a63850579a9.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation/foundation.dropdown-9d1be1f4653e20bbb646953d8ba3f0d2.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation/foundation.clearing-7e63b91b54c435ed8caebc3a18833e01.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation/foundation.interchange-a6ef1d5d094c7a6de4a498df271d2f7c.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation/foundation.joyride-ece3c8ec51483cb81f9040673e6d16b9.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation/foundation.offcanvas-3d1e488b20a7cb899d79a635854b48f2.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation/foundation.magellan-20905c8a672128ede186f77afd7fc8c4.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation/foundation.orbit-e2a0625e0ba733085c1a37beae54b7b1.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation/foundation.reveal-c51f57fbd0339210aef37a16fd8838be.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation/foundation.slider-5cd56e1e89cec67afd4284470fb1a345.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation/foundation.tab-02352f12dc76fda0233ae3085723db96.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation/foundation.tooltip-0c16c04577b3200eb5096889d8cc10d6.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation/foundation.topbar-1d42b50c84d2d78925018cd76ea245ec.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation/foundation.equalizer-8d75c7c06dbd5fd6659bfce7370401a4.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/foundation-7e65ec5c06209096aa80d02c90e47209.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/assets/application-1f2fc0443bd8321ba0aee1f1c35298c3.js?body=1" for ::1 at 2014-12-29 15:27:58 -0500
+
+
+Started GET "/weathers/new" for ::1 at 2014-12-29 15:28:12 -0500
+Processing by WeathersController#new as HTML
+  Rendered weathers/new.html.erb within layouts/application (20.7ms)
+Completed 200 OK in 146ms (Views: 134.4ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/weathers" for ::1 at 2014-12-29 15:28:40 -0500
+Processing by WeathersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"s2cVJX9IFm9AA/XBj7O9E4Abjrullb4nzzDHVIxjmYf9girCLlj3AEEhZMDfBqT2NX702NDWw+dhn4OZx7N0zw==", "weather"=>{"city"=>"Boston", "state"=>"MA", "date(1i)"=>"2014", "date(2i)"=>"12", "date(3i)"=>"29", "conditions"=>"Kind of cold but not really", "feel"=>"Good, man."}, "commit"=>"Create New Weather"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (2.8ms)[0m  [1mINSERT INTO "weathers" ("city", "state", "conditions", "feel", "date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["city", "Boston"], ["state", "MA"], ["conditions", "Kind of cold but not really"], ["feel", "Good, man."], ["date", "2014-12-29 00:00:00.000000"], ["created_at", "2014-12-29 20:28:40.138368"], ["updated_at", "2014-12-29 20:28:40.138368"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/weathers/new
+Completed 302 Found in 13ms (ActiveRecord: 3.9ms)
+
+
+Started GET "/weathers/new" for ::1 at 2014-12-29 15:28:40 -0500
+Processing by WeathersController#new as HTML
+  Rendered weathers/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 174ms (Views: 173.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2014-12-29 15:31:43 -0500
+Processing by WeathersController#index as HTML
+Completed 500 Internal Server Error in 8ms
+
+ActionView::MissingTemplate (Missing template weathers/index, application/index with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/drosenblatt/.gem/ruby/2.0.0/gems/web-console-2.0.0/lib/action_dispatch/templates"
+  * "/Users/drosenblatt/Documents/Launch_Academy/threesacloud/app/views"
+  * "/Users/drosenblatt/.gem/ruby/2.0.0/gems/foundation-rails-5.5.0.0/app/views"
+  * "/Users/drosenblatt/.gem/ruby/2.0.0/gems/devise-3.4.1/app/views"
+):
+  actionview (4.2.0) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.0) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.0) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.0) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.0) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.0) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/drosenblatt/.rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:18:in `middleware_call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/drosenblatt/.rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/drosenblatt/.rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/drosenblatt/.rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/drosenblatt/.gem/ruby/2.0.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (4.4ms)
+  Rendered /Users/drosenblatt/.gem/ruby/2.0.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/drosenblatt/.gem/ruby/2.0.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/drosenblatt/.gem/ruby/2.0.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (0.8ms)
+  Rendered /Users/drosenblatt/.gem/ruby/2.0.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/missing_template.html.erb within rescues/layout (25.3ms)
+
+
+Started GET "/" for ::1 at 2014-12-29 15:34:43 -0500
+Processing by WeathersController#index as HTML
+  [1m[36mWeather Load (0.4ms)[0m  [1mSELECT "weathers".* FROM "weathers"[0m
+  Rendered weathers/index.html.erb within layouts/application (63.6ms)
+Completed 200 OK in 188ms (Views: 183.0ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/assets/foundation_and_overrides-972e2baca971fce24ea51fca63aba129.css?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/application-b6533a0fea76d8137c77d5fc8a79a688.css?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation/foundation-28dcfe122165ca87303a5e8bdacdaf4b.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation/foundation.abide-40a8b7cb322912e042710a63850579a9.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/jquery-ea2706bc2d0586731b7c00ec2cd0a414.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/jquery_ujs-99f13489684e179b71ca7517fb74318d.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation/foundation.accordion-1f0842192c6706aa6f2bad4fa91ce11c.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation/foundation.alert-0048959f2011c4c8477208cd3319fef7.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation/foundation.clearing-7e63b91b54c435ed8caebc3a18833e01.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation/foundation.dropdown-9d1be1f4653e20bbb646953d8ba3f0d2.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation/foundation.interchange-a6ef1d5d094c7a6de4a498df271d2f7c.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation/foundation.joyride-ece3c8ec51483cb81f9040673e6d16b9.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation/foundation.magellan-20905c8a672128ede186f77afd7fc8c4.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation/foundation.offcanvas-3d1e488b20a7cb899d79a635854b48f2.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation/foundation.orbit-e2a0625e0ba733085c1a37beae54b7b1.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation/foundation.reveal-c51f57fbd0339210aef37a16fd8838be.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation/foundation.slider-5cd56e1e89cec67afd4284470fb1a345.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation/foundation.tab-02352f12dc76fda0233ae3085723db96.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation/foundation.tooltip-0c16c04577b3200eb5096889d8cc10d6.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation/foundation.topbar-1d42b50c84d2d78925018cd76ea245ec.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation/foundation.equalizer-8d75c7c06dbd5fd6659bfce7370401a4.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/foundation-7e65ec5c06209096aa80d02c90e47209.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/assets/application-1f2fc0443bd8321ba0aee1f1c35298c3.js?body=1" for ::1 at 2014-12-29 15:34:43 -0500
+
+
+Started GET "/" for ::1 at 2014-12-29 15:34:52 -0500
+Processing by WeathersController#index as HTML
+  [1m[35mWeather Load (0.3ms)[0m  SELECT "weathers".* FROM "weathers"
+  Rendered weathers/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 130ms (Views: 129.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application-b6533a0fea76d8137c77d5fc8a79a688.css?body=1" for ::1 at 2014-12-29 15:34:52 -0500
+
+
+Started GET "/assets/foundation_and_overrides-972e2baca971fce24ea51fca63aba129.css?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/jquery-ea2706bc2d0586731b7c00ec2cd0a414.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation/foundation.accordion-1f0842192c6706aa6f2bad4fa91ce11c.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation/foundation.abide-40a8b7cb322912e042710a63850579a9.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation/foundation.alert-0048959f2011c4c8477208cd3319fef7.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation/foundation-28dcfe122165ca87303a5e8bdacdaf4b.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/jquery_ujs-99f13489684e179b71ca7517fb74318d.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation/foundation.clearing-7e63b91b54c435ed8caebc3a18833e01.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation/foundation.dropdown-9d1be1f4653e20bbb646953d8ba3f0d2.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation/foundation.interchange-a6ef1d5d094c7a6de4a498df271d2f7c.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation/foundation.joyride-ece3c8ec51483cb81f9040673e6d16b9.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation/foundation.magellan-20905c8a672128ede186f77afd7fc8c4.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation/foundation.offcanvas-3d1e488b20a7cb899d79a635854b48f2.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation/foundation.orbit-e2a0625e0ba733085c1a37beae54b7b1.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation/foundation.reveal-c51f57fbd0339210aef37a16fd8838be.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation/foundation.slider-5cd56e1e89cec67afd4284470fb1a345.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation/foundation.tab-02352f12dc76fda0233ae3085723db96.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation/foundation.tooltip-0c16c04577b3200eb5096889d8cc10d6.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation/foundation.topbar-1d42b50c84d2d78925018cd76ea245ec.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation/foundation.equalizer-8d75c7c06dbd5fd6659bfce7370401a4.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/foundation-7e65ec5c06209096aa80d02c90e47209.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500
+
+
+Started GET "/assets/application-1f2fc0443bd8321ba0aee1f1c35298c3.js?body=1" for ::1 at 2014-12-29 15:34:53 -0500

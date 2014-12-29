@@ -7,4 +7,12 @@ FactoryGirl.define do
     password_confirmation 'password'
   end
 
+  factory :weather do
+    city 'Boston'
+    state 'MA'
+    date Time.now
+    conditions 'Cloudy'
+    feel 'Cold'
+  end
+
 end

@@ -1,0 +1,5 @@
+<% @weathers.each do |weather| %>
+<p>
+  <%= weather.city %>, <%= weather.date.strftime("%B %d %Y") %>
+</p>
+<% end %>
