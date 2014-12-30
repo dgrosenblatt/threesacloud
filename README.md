@@ -1,6 +1,9 @@
 threesacloud
 ============
 
+[![Build Status](https://travis-ci.org/dgrosenblatt/threesacloud.svg?branch=master)](https://travis-ci.org/dgrosenblatt/threesacloud)
+
+
 Concept:
 
 To review the weather of a certain day in a location selected by the user. This will then be shared with other users and voted up/down based upon the hilarity of the review comment.
