@@ -20,6 +20,26 @@ class WeathersController < ApplicationController
     end
   end
 
+  def edit
+    @weather = Weather.find(params[:id])
+  end
+
+  def update
+    @weather = Weather.find(params[:id])
+    if @weather.update(weather_params)
+      redirect_to weather_path(@weather), notice: "Weather successfully updated"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @weather = Weather.find(params[:id])
+    if @weather.destroy
+      redirect_to weathers_path, notice: "Weather successfully deleted"
+    end
+  end
+
   private
   def weather_params
     params.require(:weather).permit(:city, :state, :date, :conditions, :feel)
