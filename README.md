@@ -1,7 +1,7 @@
 threesacloud
 ============
 
-[![Build Status](https://travis-ci.org/dgrosenblatt/threesacloud.svg?branch=master)](https://travis-ci.org/dgrosenblatt/threesacloud) [![Coverage Status](https://coveralls.io/repos/dgrosenblatt/threesacloud/badge.png)](https://coveralls.io/r/dgrosenblatt/threesacloud)
+[![Build Status](https://travis-ci.org/dgrosenblatt/threesacloud.svg?branch=master)](https://travis-ci.org/dgrosenblatt/threesacloud) [![Coverage Status](https://coveralls.io/repos/dgrosenblatt/threesacloud/badge.png)](https://coveralls.io/r/dgrosenblatt/threesacloud) [![Code Climate](https://codeclimate.com/github/dgrosenblatt/threesacloud/badges/gpa.svg)](https://codeclimate.com/github/dgrosenblatt/threesacloud)
 
 
 Concept:
