@@ -13,6 +13,7 @@ class WeathersController < ApplicationController
 
   def create
     @weather = Weather.new(weather_params)
+    @weather.user = current_user
     if @weather.save
       redirect_to weathers_path, notice: "New weather successfully submitted"
     else
@@ -26,6 +27,7 @@ class WeathersController < ApplicationController
 
   def update
     @weather = Weather.find(params[:id])
+    @weather.user = current_user
     if @weather.update(weather_params)
       redirect_to weather_path(@weather), notice: "Weather successfully updated"
     else
