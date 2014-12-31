@@ -1,24 +1,24 @@
 <div class="row">
-	<%= form_for @weather do |f| %>
-	<div class="small-4 small-offset-4 columns">
-		<%= f.label :city, 'City' %>
-		<%= f.text_field :city %>
+  <%= form_for @weather do |f| %>
+  <div class="small-4 small-offset-4 columns">
+    <%= f.label :city, 'City' %>
+    <%= f.text_field :city %>
 
-		<%= f.label :state, 'State' %>
-		<%= f.text_field :state %>
+    <%= f.label :state, 'State' %>
+    <%= f.text_field :state %>
 
-		<%= f.label :date, 'Date' %>
-		<%= f.date_select :date %>
+    <%= f.label :date, 'Date' %>
+    <%= f.date_select :date %>
 
-		<%= f.label :conditions, 'Conditions' %>
-		<%= f.text_field :conditions %>
+    <%= f.label :conditions, 'Conditions' %>
+    <%= f.text_field :conditions %>
 
-		<%= f.label :feel, 'Feel' %>
-		<%= f.text_field :feel %>
+    <%= f.label :feel, 'Feel' %>
+    <%= f.text_field :feel %>
 
-		<%= f.submit 'Create New Weather' %>
-		</div>
-	<% end %>
+    <%= f.submit 'Create New Weather' %>
+  </div>
+  <% end %>
 </div>
 
 
