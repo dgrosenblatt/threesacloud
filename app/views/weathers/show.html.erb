@@ -1,3 +1,27 @@
 <h1><%= @weather.city %>, <%= @weather.state %>, <%= @weather.date.strftime("%B %d %Y") %></h1>
 <h4><%= @weather.conditions %>, <%= @weather.feel %></h4>
+
 <%= link_to 'Delete', @weather, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<% if @review.errors.any? %>
+  <% @review.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end %>
+<% end %>
+
+<%= form_for [@weather, @review] do |r| %>
+  
+  <%= r.label :rating, "Rating" %>
+  <%= r.select :rating, options_for_select(%w[1 2 3 4 5]) %>
+
+  <%= r.label :comment, "Comment" %>
+  <%= r.text_area :comment %>
+
+  <%= r.submit "Submit" %>
+
+<% end %>
+
+<% @weather.reviews.each do |review| %>
+  <%= review.comment %>
+  <%= review.rating %>
+<% end %>

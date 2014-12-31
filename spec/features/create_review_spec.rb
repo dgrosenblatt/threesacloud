@@ -1,27 +1,39 @@
-require "rails-helper"
+require "rails_helper"
 
-Rspec.features "User wants to add a new review to a weather submission " do
-  
-  scenario "user properly enters a new review" do
-    weather = FactoryGirl.create(:weather)
-    visit "/weathers/#{weather.id}"
+feature "User wants to add a new review to a weather submission " do
+  context "authenticated user" do
+    before :each do
+      @user = FactoryGirl.create(:user)
+      login_as(@user)
+      # ,focus: true
+    end
 
-    fill_in :comment with "Man it's cold!"
-    select("2", :from => "Select Box")
-    click_on("Submit")
+    scenario "user properly enters a new review"  do 
+      weather = FactoryGirl.create(:weather)
+    
+      visit "/weathers/#{weather.id}"
 
-    expect(page).to have_content("Man it's cold!")
-    expect(page).to have_content("2")
+      fill_in "Comment", with: "Man it's cold!"
+      select(2, :from => "Rating")
+      save_and_open_page
+      click_on("Submit")
+
+      expect(page).to have_content("Man it's cold!")
+      expect(page).to have_content("2")
+    end
+
+    scenario "user enters invalid info" do
+      weather = FactoryGirl.create(:weather)
+    
+      visit "/weathers/#{weather.id}"
+      click_on("Submit")
+
+      expect(page).to have_content("Comment can't be blank")
+     
+    end
   end
 
-  scenario "user enters invalid info" do
-    weather = FactoryGirl.create(:weather)
-    visit "/weathers/#{weather.id}"
-    click_on("Submit")
 
-    expect(page).to have_content("the review can't be blank")
-    expect(page).to have_content("a rating must be selected")
-  end
 
 
 end
