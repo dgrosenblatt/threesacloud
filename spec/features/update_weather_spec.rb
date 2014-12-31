@@ -5,6 +5,11 @@ feature "User updates an existing weather", %{
   I want to update an existing weather
   So that others can view that update
   } do
+  before :each do
+    @user = FactoryGirl.create(:user)
+    login_as(@user)
+  end
+
 
   scenario "with valid data" do
     weather = FactoryGirl.create(:weather)

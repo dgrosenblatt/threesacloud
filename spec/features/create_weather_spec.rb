@@ -6,6 +6,11 @@ feature 'User adds a new weather', %Q{
   So that others can review it
   } do
 
+  before :each do
+    @user = FactoryGirl.create(:user)
+    login_as(@user)
+  end
+
   scenario 'with valid data' do
     weather = FactoryGirl.create(:weather)
     visit '/weathers/new'

@@ -5,6 +5,10 @@ feature "User deletes an existing weather", %{
   I want to delete an existing weather
   So that the weather can longer be viewed
   } do
+  before :each do
+    @user = FactoryGirl.create(:user)
+    login_as(@user)
+  end
 
   scenario "with valid data" do
     weather = FactoryGirl.create(:weather)

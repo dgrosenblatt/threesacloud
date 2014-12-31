@@ -1,4 +1,6 @@
 class WeathersController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  
   def new
     @weather = Weather.new
   end
@@ -9,6 +11,7 @@ class WeathersController < ApplicationController
 
   def show
     @weather = Weather.find(params[:id])
+    @review = Review.new
   end
 
   def create
