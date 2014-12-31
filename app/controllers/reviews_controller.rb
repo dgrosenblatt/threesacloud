@@ -1,12 +1,12 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def create
     @review = Review.new(review_params)
     @review.user = current_user
     @review.weather_id = params[:weather_id]
     @weather = Weather.find(@review.weather_id)
-    if @review.save      
+    if @review.save
       redirect_to @review.weather, notice: "Your review has been posted"
     else
       render "weathers/show"
