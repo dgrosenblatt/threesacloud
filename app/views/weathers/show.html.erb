@@ -1,2 +1,3 @@
 <h1><%= @weather.city %>, <%= @weather.state %>, <%= @weather.date.strftime("%B %d %Y") %></h1>
 <h4><%= @weather.conditions %>, <%= @weather.feel %></h4>
+<%= link_to 'Delete', @weather, method: :delete, data: { confirm: 'Are you sure?' } %>

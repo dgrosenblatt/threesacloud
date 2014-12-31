@@ -10,7 +10,7 @@ FactoryGirl.define do
   factory :weather do
     city 'Boston'
     state 'MA'
-    date Time.now
+    date { Time.now }
     conditions 'Cloudy'
     feel 'Cold'
   end

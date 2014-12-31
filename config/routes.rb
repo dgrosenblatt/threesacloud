@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'weathers#index'
   devise_for :users
-  resources :weathers, only: [:new, :create, :index, :show]
+  resources :weathers
+end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -56,4 +57,3 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end

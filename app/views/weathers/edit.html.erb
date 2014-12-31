@@ -1,0 +1,20 @@
+<%= form_for @weather do |f| %>
+
+<%= f.label :city, 'City' %>
+<%= f.text_field :city %>
+
+<%= f.label :state, 'State' %>
+<%= f.text_field :state %>
+
+<%= f.label :date, 'Date' %>
+<%= f.date_select :date %>
+
+<%= f.label :conditions, 'Conditions' %>
+<%= f.text_field :conditions %>
+
+<%= f.label :feel, 'Feel' %>
+<%= f.text_field :feel %>
+
+<%= f.submit 'Submit' %>
+
+<% end %>
