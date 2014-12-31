@@ -5,17 +5,17 @@ feature "User wants to add a new review to a weather submission " do
     before :each do
       @user = FactoryGirl.create(:user)
       login_as(@user)
-      # ,focus: true
+
     end
 
-    scenario "user properly enters a new review"  do 
+    scenario "user properly enters a new review"  do
       weather = FactoryGirl.create(:weather)
-    
+
       visit "/weathers/#{weather.id}"
 
       fill_in "Comment", with: "Man it's cold!"
       select(2, :from => "Rating")
-      save_and_open_page
+
       click_on("Submit")
 
       expect(page).to have_content("Man it's cold!")
@@ -24,16 +24,13 @@ feature "User wants to add a new review to a weather submission " do
 
     scenario "user enters invalid info" do
       weather = FactoryGirl.create(:weather)
-    
+
       visit "/weathers/#{weather.id}"
       click_on("Submit")
 
       expect(page).to have_content("Comment can't be blank")
-     
+
     end
   end
-
-
-
 
 end
