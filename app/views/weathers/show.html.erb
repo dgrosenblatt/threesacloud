@@ -26,6 +26,19 @@
     <%= review.rating %>
     <%=link_to "Edit Review", edit_weather_review_path(@weather, review) %>
     <%= link_to 'Delete', [@weather, review] , method: :delete, data: { confirm: 'Are you sure?' } %>
+    <br>
+
+
+      <%= form_for [review, @vote] do |f| %>
+        <%= f.hidden_field :choice, value: "up" %>
+        <%= f.submit "Upvote" %>
+      <% end %>
+      <%= form_for [review, @vote] do |f| %>
+        <%= f.hidden_field :choice, value: "down" %>
+        <%= f.submit "Downvote" %>
+      <% end %>
+
+    <p>+<%= review.upvotes %> | -<%= review.downvotes %></p>
   <% end %>
 </div>
 
