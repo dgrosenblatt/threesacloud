@@ -13,6 +13,28 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @review = Review.find(params[:id])
+    @weather = Weather.find(@review.weather_id)
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    @weather = Weather.find(@review.weather_id)
+    if @review.update(review_params)
+      redirect_to @weather, notice: "Review successfully updated "
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @weather = Weather.find(@review.weather_id)
+    @review.destroy
+    redirect_to @weather, notice: "Review successfully deleted"
+  end
+
   private
 
   def review_params

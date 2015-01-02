@@ -15,4 +15,11 @@ FactoryGirl.define do
     feel 'Cold'
   end
 
+  factory :review do
+    comment "Nice weather"
+    rating 5
+    weather
+    user
+  end
+
 end
