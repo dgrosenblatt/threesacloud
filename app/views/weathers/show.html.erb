@@ -20,12 +20,13 @@
   <%= r.submit "Submit" %>
 
 <% end %>
-
-<% @weather.reviews.each do |review| %>
-  <%= review.comment %>
-  <%= review.rating %>
-  <%=link_to "Edit Review", edit_weather_review_path(@weather, review) %>
-<% end %>
-
+<div id="weather_reviews">
+  <% @weather.reviews.each do |review| %>
+    <%= review.comment %>
+    <%= review.rating %>
+    <%=link_to "Edit Review", edit_weather_review_path(@weather, review) %>
+    <%= link_to 'Delete', [@weather, review] , method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</div>
 
 <p><a href="/weathers">Back</a></p>
