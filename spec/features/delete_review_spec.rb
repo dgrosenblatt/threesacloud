@@ -11,11 +11,8 @@ feature "User deletes an existing review", %{
   end
 
   scenario "clicking delete button" do
-    weather = FactoryGirl.create(:weather)
     review = FactoryGirl.create(:review)
-    review.weather_id = weather.id
-    review.save
-    visit "/weathers/#{weather.id}"
+    visit "/weathers/#{review.weather_id}"
 
     within("div#weather_reviews") do
       click_on "Delete"

@@ -11,11 +11,8 @@ feature "User updates an existing review", %{
   end
 
   scenario "with valid data" do
-    weather = FactoryGirl.create(:weather)
     review = FactoryGirl.create(:review)
-    review.weather_id = weather.id
-    review.save
-    visit "/weathers/#{weather.id}"
+    visit "/weathers/#{review.weather_id}"
     click_on "Edit Review"
 
     fill_in "Comment", with: "Updated comment"
@@ -26,11 +23,8 @@ feature "User updates an existing review", %{
   end
 
   scenario "with invalid data" do
-    weather = FactoryGirl.create(:weather)
     review = FactoryGirl.create(:review)
-    review.weather_id = weather.id
-    review.save
-    visit "/weathers/#{weather.id}"
+    visit "/weathers/#{review.weather_id}"
     click_on "Edit Review"
 
     fill_in "Comment", with: ""
