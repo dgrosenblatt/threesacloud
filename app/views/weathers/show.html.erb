@@ -24,6 +24,8 @@
 <% @weather.reviews.each do |review| %>
   <%= review.comment %>
   <%= review.rating %>
+  <%=link_to "Edit Review", edit_weather_review_path(@weather, review) %>
 <% end %>
+
 
 <p><a href="/weathers">Back</a></p>

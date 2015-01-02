@@ -1,0 +1,14 @@
+<% @review.errors.full_messages.each do |msg| %>
+  <%= msg %>
+<% end %>
+<%= form_for [@weather, @review] do |r| %>
+
+  <%= r.label :rating, "Rating" %>
+  <%= r.select :rating, options_for_select(%w[1 2 3 4 5]) %>
+
+  <%= r.label :comment, "Comment" %>
+  <%= r.text_area :comment %>
+
+  <%= r.submit "Submit" %>
+
+<% end %>
