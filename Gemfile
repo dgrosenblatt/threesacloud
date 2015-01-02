@@ -51,5 +51,4 @@ gem 'shoulda-matchers', group: [:development, :test], require: false
 gem 'devise'
 gem 'foundation-rails'
 gem 'coveralls', group: :test, require: false
-# included rails_12factor per Heroku error message
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
