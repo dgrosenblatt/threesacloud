@@ -16,7 +16,7 @@ FactoryGirl.define do
   end
 
   factory :review do
-    comment 'Nice weather'
+    comment "Nice weather"
     rating 5
     weather
     user

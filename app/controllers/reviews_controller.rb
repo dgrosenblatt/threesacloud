@@ -35,7 +35,6 @@ class ReviewsController < ApplicationController
     redirect_to @weather, notice: "Review successfully deleted"
   end
 
-
   private
 
   def review_params

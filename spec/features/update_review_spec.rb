@@ -10,7 +10,6 @@ feature "User updates an existing review", %{
     login_as(@user)
   end
 
-
   scenario "with valid data" do
     weather = FactoryGirl.create(:weather)
     review = FactoryGirl.create(:review)
@@ -41,6 +40,5 @@ feature "User updates an existing review", %{
     expect(page).not_to have_content "Review successfully updated"
     expect(page).to have_content "Comment can't be blank"
   end
-
 
 end
