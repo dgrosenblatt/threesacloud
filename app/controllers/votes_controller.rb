@@ -8,7 +8,8 @@ class VotesController < ApplicationController
     if @vote.save
       redirect_to @vote.review.weather, notice: "Thank you for voting."
     else
-      redirect_to @vote.review.weather, notice: "You have already voted on that review"
+      redirect_to @vote.review.weather,
+        notice: "You have already voted on that review"
     end
   end
 
@@ -43,5 +44,4 @@ class VotesController < ApplicationController
       redirect_to @weather
     end
   end
-
 end
