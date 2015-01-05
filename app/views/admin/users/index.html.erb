@@ -1,0 +1,17 @@
+<h1>All Users</h1>
+
+<% @users.each do |user| %>
+  <div>
+    <h4>
+      <%= user.email %>
+    </h4>
+    <p>
+      Signed up <%= time_ago_in_words(user.created_at) %> ago.
+    </p>
+    <% unless user.last_sign_in_at.nil? %>
+      <p>
+        Last signed in <%= time_ago_in_words(user.last_sign_in_at) %> ago.
+      </p>
+    <% end %>
+  </div>
+<% end %>
