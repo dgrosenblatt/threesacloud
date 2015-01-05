@@ -42,7 +42,9 @@
 
     <% review.votes.each do |vote| %>
       <% if vote.user == current_user %>
-        <%= link_to 'Delete my vote', [review, vote], method: :delete, data: { confirm: 'Are you sure?' } %>  
+        <p>
+          <%= link_to 'Delete my vote', [review, vote], method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
       <% end %>
     <% end %>
 
