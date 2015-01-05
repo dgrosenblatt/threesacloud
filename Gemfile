@@ -52,3 +52,6 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'coveralls', group: :test, require: false
 gem 'rails_12factor', group: :production
+gem 'carrierwave'
+gem 'dotenv-rails', group: [:development, :test]
+gem 'fog'
