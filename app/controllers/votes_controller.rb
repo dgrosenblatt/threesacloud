@@ -5,8 +5,11 @@ class VotesController < ApplicationController
     @vote = Vote.new(choice: params[:vote][:choice])
     @vote.user = current_user
     @vote.review_id = params[:review_id]
-    @vote.save
-    redirect_to @vote.review.weather, notice: "Thank you for voting."
+    if @vote.save
+      redirect_to @vote.review.weather, notice: "Thank you for voting."
+    else
+      redirect_to @vote.review.weather, notice: "You have already voted on that review"
+    end
   end
 
   def update
@@ -15,7 +18,7 @@ class VotesController < ApplicationController
     if @vote.user != current_user
       redirect_to @weather
     end
-    
+
     if @vote.choice == "up"
       @vote.choice = "down"
     else
