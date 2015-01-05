@@ -15,8 +15,13 @@ class VotesController < ApplicationController
   def destroy
     @vote = Vote.find(params[:id])
     @weather = @vote.review.weather
-    @vote.destroy
-    redirect_to @weather, notice: "Vote deleted"
+
+    if @vote.user == current_user
+      @vote.destroy
+      redirect_to @weather, notice: "Vote Deleted"
+    else
+      redirect_to @weather
+    end
   end
 
 end

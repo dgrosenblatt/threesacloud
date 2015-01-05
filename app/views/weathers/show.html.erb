@@ -39,6 +39,13 @@
       <% end %>
 
     <p>+<%= review.upvotes %> | -<%= review.downvotes %></p>
+
+    <% review.votes.each do |vote| %>
+      <% if vote.user == current_user %>
+        <%= link_to 'Delete my vote', [review, vote], method: :delete, data: { confirm: 'Are you sure?' } %>  
+      <% end %>
+    <% end %>
+
   <% end %>
 </div>
 
