@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
 
   has_many :weathers
   has_many :reviews
+  has_many :votes
 end

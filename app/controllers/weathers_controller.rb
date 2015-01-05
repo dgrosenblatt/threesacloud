@@ -12,6 +12,7 @@ class WeathersController < ApplicationController
   def show
     @weather = Weather.find(params[:id])
     @review = Review.new
+    @vote = Vote.new
   end
 
   def create
