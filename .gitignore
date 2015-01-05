@@ -2,6 +2,7 @@
 /log*
 /coverage
 log/*.log
+
 /public/uploads
 
 /.env
