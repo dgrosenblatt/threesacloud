@@ -58,3 +58,5 @@ So that I can see what other parts of the country are experiencing
 
 If you want to run a single test instead of the entire test suite, add ' ,focus: true' before the do for each scenario.
 
+Note that everyone will need to have an empty .env file in your version or it will blow up when going to Travis.
+
