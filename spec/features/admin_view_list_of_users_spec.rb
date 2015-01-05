@@ -10,4 +10,12 @@ feature "Admin views a list of users" do
     expect(page).to have_content "All Users"
     expect(page).to have_content "example.com"
   end
+
+  scenario "while logged in as a regular member" do
+    @user = FactoryGirl.create(:user)
+    login_as(@user)
+    visit "/admin/users"
+
+    expect(page).to have_content "You must be an admin to view that page."
+  end
 end
