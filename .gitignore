@@ -5,3 +5,4 @@ log/*.log
 /public/uploads
 
 /.env
+/.env.example
