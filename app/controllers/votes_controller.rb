@@ -10,6 +10,23 @@ class VotesController < ApplicationController
   end
 
   def update
+    @vote = Vote.find(params[:id])
+    @weather = @vote.review.weather
+    if @vote.user != current_user
+      redirect_to @weather
+    end
+    
+    if @vote.choice == "up"
+      @vote.choice = "down"
+    else
+      @vote.choice = "up"
+    end
+
+    if @vote.save
+      redirect_to @weather, notice: "Vote Changed"
+    else
+      redirect_to @weather
+    end
   end
 
   def destroy

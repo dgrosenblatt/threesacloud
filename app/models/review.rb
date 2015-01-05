@@ -14,8 +14,8 @@ class Review < ActiveRecord::Base
     votes.where(choice: "down").length
   end
 
-  def voted?
-    votes.where(user_id: current_user.id).any?
-  end
+  # def voted?
+  #   votes.where(user_id: current_user.id).any?
+  # end
 
 end
