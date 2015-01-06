@@ -5,6 +5,7 @@ FactoryGirl.define do
     sequence(:email) {|n| "user#{n}@example.com" }
     password 'password'
     password_confirmation 'password'
+    role "member"
 
   end
 
@@ -14,6 +15,7 @@ FactoryGirl.define do
     date { Time.now }
     conditions 'Cloudy'
     feel 'Cold'
+    user
   end
 
   factory :review do

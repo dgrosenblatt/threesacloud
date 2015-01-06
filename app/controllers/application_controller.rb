@@ -10,4 +10,10 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :profile_photo
   end
+
+  def authorize_user
+    unless !current_user.nil? && current_user.admin?
+      redirect_to root_url, notice: "You must be an admin to view that page."
+    end
+  end
 end

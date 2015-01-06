@@ -31,8 +31,12 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @weather = Weather.find(@review.weather_id)
-    @review.destroy
-    redirect_to @weather, notice: "Review successfully deleted"
+    if current_user == @review.user || current_user.admin?
+      @review.destroy
+      redirect_to @weather, notice: "Review successfully deleted"
+    else
+      redirect_to @weather
+    end
   end
 
   private

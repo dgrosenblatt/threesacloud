@@ -5,14 +5,12 @@ feature "User deletes an existing review", %{
   I want to delete an existing review
   So that the review can longer be viewed
   } do
-  before :each do
-    @user = FactoryGirl.create(:user)
-    login_as(@user)
-  end
 
   scenario "clicking delete button" do
     review = FactoryGirl.create(:review)
-    visit "/weathers/#{review.weather_id}"
+    user = review.user
+    login_as(user)
+    visit weather_path(review.weather)
 
     within("div#weather_reviews") do
       click_on "Delete"
