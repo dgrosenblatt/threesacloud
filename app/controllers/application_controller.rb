@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def authorize_user
-    unless current_user.admin?
+    unless !current_user.nil? && current_user.admin?
       redirect_to root_url, notice: "You must be an admin to view that page."
     end
   end

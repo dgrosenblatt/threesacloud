@@ -13,5 +13,9 @@
         Last signed in <%= time_ago_in_words(user.last_sign_in_at) %> ago.
       </p>
     <% end %>
+    <p>
+      <%= link_to "Delete account for #{user.email}", admin_user_path(user),
+          method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
   </div>
 <% end %>
