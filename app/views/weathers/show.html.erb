@@ -21,35 +21,37 @@
 
 <% end %>
 <div id="weather_reviews">
-  <% @weather.reviews.each do |review| %>
-    <%= review.comment %>
-    <%= review.rating %>
-    <%=link_to "Edit Review", edit_weather_review_path(@weather, review) %>
-    <%= link_to 'Delete', [@weather, review] , method: :delete, data: { confirm: 'Are you sure?' } %>
-    <br>
+  <% @reviews = Review.where(weather_id: @weather.id).order(:created_at).page params[:page]%>
+    <% @reviews.each do |review| %>
+      <%= review.comment %>
+      <%= review.rating %>
+      <%=link_to "Edit Review", edit_weather_review_path(@weather, review) %>
+      <%= link_to 'Delete', [@weather, review] , method: :delete, data: { confirm: 'Are you sure?' } %>
+      <br>
 
+      <nav><%= paginate @reviews%></nav>
+      
+        <%= form_for [review, @vote] do |f| %>
+          <%= f.hidden_field :choice, value: "up" %>
+          <%= f.submit "Upvote" %>
+        <% end %>
+        <%= form_for [review, @vote] do |f| %>
+          <%= f.hidden_field :choice, value: "down" %>
+          <%= f.submit "Downvote" %>
+        <% end %>
 
-      <%= form_for [review, @vote] do |f| %>
-        <%= f.hidden_field :choice, value: "up" %>
-        <%= f.submit "Upvote" %>
+      <p>+<%= review.upvotes %> | -<%= review.downvotes %></p>
+
+      <% review.votes.each do |vote| %>
+        <% if vote.user == current_user %>
+          <p>
+            <%= link_to 'Delete my vote', [review, vote], method: :delete, data: { confirm: 'Are you sure?' } %> |
+            <%= link_to 'Change my vote', [review, vote], method: :put %>
+          </p>
+        <% end %>
       <% end %>
-      <%= form_for [review, @vote] do |f| %>
-        <%= f.hidden_field :choice, value: "down" %>
-        <%= f.submit "Downvote" %>
       <% end %>
 
-    <p>+<%= review.upvotes %> | -<%= review.downvotes %></p>
-
-    <% review.votes.each do |vote| %>
-      <% if vote.user == current_user %>
-        <p>
-          <%= link_to 'Delete my vote', [review, vote], method: :delete, data: { confirm: 'Are you sure?' } %> |
-          <%= link_to 'Change my vote', [review, vote], method: :put %>
-        </p>
-      <% end %>
-    <% end %>
-
-  <% end %>
 </div>
 
 <p><a href="/weathers">Back</a></p>
