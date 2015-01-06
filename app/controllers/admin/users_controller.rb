@@ -16,6 +16,5 @@ module Admin
       end
       redirect_to admin_users_path
     end
-
   end
 end
