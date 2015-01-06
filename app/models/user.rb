@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :votes
 
+  validates :role,
+    inclusion: { in: ["member", "admin"] }
+
   def admin?
     role == "admin"
   end

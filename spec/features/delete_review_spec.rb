@@ -7,16 +7,16 @@ feature "User deletes an existing review", %{
   } do
 
   scenario "clicking delete button" do
-    @review = FactoryGirl.create(:review)
-    @user = @review.user
-    login_as(@user)
-    visit "/weathers/#{@review.weather_id}"
+    review = FactoryGirl.create(:review)
+    user = review.user
+    login_as(user)
+    visit weather_path(review.weather)
 
     within("div#weather_reviews") do
       click_on "Delete"
     end
 
     expect(page).to have_content "Review successfully deleted"
-    expect(page).not_to have_content @review.comment
+    expect(page).not_to have_content review.comment
   end
 end
