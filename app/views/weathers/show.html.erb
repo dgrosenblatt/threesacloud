@@ -1,7 +1,9 @@
 <h1><%= @weather.city %>, <%= @weather.state %>, <%= @weather.date.strftime("%B %d %Y") %></h1>
 <h4><%= @weather.conditions %>, <%= @weather.feel %></h4>
 
-<%= link_to 'Delete', @weather, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% if !current_user.nil? && (current_user.admin? || @weather.user == current_user) %>
+  <%= link_to 'Delete', @weather, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
 
 <% if @review.errors.any? %>
   <% @review.errors.full_messages.each do |msg| %>
@@ -24,10 +26,11 @@
   <% @weather.reviews.each do |review| %>
     <%= review.comment %>
     <%= review.rating %>
-    <%=link_to "Edit Review", edit_weather_review_path(@weather, review) %>
-    <%= link_to 'Delete', [@weather, review] , method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to "Edit Review", edit_weather_review_path(@weather, review) %>
+    <% if !current_user.nil? && (review.user == current_user || current_user.admin?) %>
+      <%= link_to 'Delete', [@weather, review] , method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
     <br>
-
 
       <%= form_for [review, @vote] do |f| %>
         <%= f.hidden_field :choice, value: "up" %>

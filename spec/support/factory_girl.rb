@@ -14,6 +14,7 @@ FactoryGirl.define do
     date { Time.now }
     conditions 'Cloudy'
     feel 'Cold'
+    user
   end
 
   factory :review do

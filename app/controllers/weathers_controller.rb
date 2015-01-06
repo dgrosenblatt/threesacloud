@@ -41,8 +41,11 @@ class WeathersController < ApplicationController
 
   def destroy
     @weather = Weather.find(params[:id])
-    if @weather.destroy
+    if current_user.admin? || @weather.user == current_user
+      @weather.destroy
       redirect_to weathers_path, notice: "Weather successfully deleted"
+    else
+      redirect_to @weather
     end
   end
 
