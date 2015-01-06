@@ -6,7 +6,7 @@ class WeathersController < ApplicationController
   end
 
   def index
-    @weathers = Weather.all
+    @weathers = Weather.search(params[:search])
   end
 
   def show
