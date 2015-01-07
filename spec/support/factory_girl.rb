@@ -10,7 +10,7 @@ FactoryGirl.define do
   end
 
   factory :weather do
-    city 'Boston'
+    sequence(:city) { |n| "#{n}Boston" }
     state 'MA'
     date { Time.now }
     conditions 'Cloudy'
@@ -19,7 +19,7 @@ FactoryGirl.define do
   end
 
   factory :review do
-    comment "Nice weather"
+    sequence(:comment) { |n| "#{n}comment" }
     rating 5
     weather
     user

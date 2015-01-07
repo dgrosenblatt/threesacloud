@@ -6,13 +6,15 @@ class WeathersController < ApplicationController
   end
 
   def index
-    @weathers = Weather.all
+    @weathers = Weather.order(:date).page params[:page]
   end
 
   def show
     @weather = Weather.find(params[:id])
-    @review = Review.new
+    @reviews = Review.where(weather_id: @weather.id).order(:created_at).page params[:page]
     @vote = Vote.new
+    @review = Review.new
+
   end
 
   def create

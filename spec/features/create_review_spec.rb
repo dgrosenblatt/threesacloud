@@ -22,8 +22,19 @@ feature "User wants to add a new review to a weather submission " do
       expect(page).to have_content("2")
     end
 
+    scenario "user creates multiple reviews" do
+
+      weather = FactoryGirl.create(:weather)
+      FactoryGirl.create_list(:review, 12, weather_id: weather.id)
+
+      visit weather_path(weather.id)
+
+      expect(page).to have_content("Next")
+    end
+
     scenario "user enters invalid info" do
       weather = FactoryGirl.create(:weather)
+      FactoryGirl.create(:review, weather_id: weather.id)
 
       visit "/weathers/#{weather.id}"
       click_on("Submit")

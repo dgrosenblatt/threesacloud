@@ -6,6 +6,8 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     @review.weather_id = params[:weather_id]
     @weather = Weather.find(@review.weather_id)
+    @reviews = Review.where(weather_id: @weather.id).order(:created_at).page params[:page]
+    @vote = Vote.new
     if @review.save
       redirect_to @review.weather, notice: "Your review has been posted"
     else

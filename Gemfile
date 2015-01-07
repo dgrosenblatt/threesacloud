@@ -56,3 +56,4 @@ gem 'carrierwave'
 gem 'dotenv-rails', group: [:development, :test]
 gem 'fog'
 gem 'pry', group: [:develpment, :test]
+gem 'kaminari'

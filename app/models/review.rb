@@ -6,6 +6,8 @@ class Review < ActiveRecord::Base
   validates :comment, presence: true
   validates :rating, presence: true
 
+  paginates_per 10
+
   def upvotes
     votes.where(choice: "up").length
   end
