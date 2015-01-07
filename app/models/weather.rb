@@ -20,5 +20,4 @@ class Weather < ActiveRecord::Base
     self.conditions = current_weather["weather"]
     self.icon_url = current_weather["icon_url"]
   end
-
 end
