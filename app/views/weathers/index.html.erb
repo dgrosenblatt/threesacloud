@@ -1,15 +1,25 @@
-
+<div class ="row">
+  <div class="small-4 small-offset-4 columns" >
+    <%= form_tag weathers_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+  <% end %>
+  </div>
+</div>
 <div class="row">
-  <% @weathers.each do |weather| %>
-  <p>
-    <div class="large-3 columns">
-      <span class="">
-        <a href="/weathers/<%= weather.id %>" class="button radius">
-          <%= weather.city %>, <%= weather.date.strftime("%B %d %Y") %>
-        </a>
-      </span>
-    </div>
-  </p>
+    <% @weathers.each do |weather| %>
+    <p>
+      <div class="large-3 columns">
+        <span class="">
+          <a href="/weathers/<%= weather.id %>" class="button radius">
+            <%= weather.city %>, <%= weather.date.strftime("%B %d %Y") %>
+          </a>
+        </span>
+      </div>
+    </p>
   <% end %>
 </div>
+
 <nav align ="center"><%= paginate @weathers %></nav>
