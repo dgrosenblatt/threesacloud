@@ -12,7 +12,7 @@ feature 'User adds a new weather', %Q{
   end
 
   scenario 'with valid data' do
-    weather = FactoryGirl.create(:weather)
+    weather = FactoryGirl.build(:weather)
     visit '/weathers/new'
     fill_in 'City', with: weather.city
     select 'Massachusetts', from: "State"
