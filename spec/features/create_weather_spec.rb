@@ -15,16 +15,21 @@ feature 'User adds a new weather', %Q{
     weather = FactoryGirl.create(:weather)
     visit '/weathers/new'
     fill_in 'City', with: weather.city
-    fill_in 'State', with: weather.state
-    select '2014', from: 'weather_date_1i'
-    select 'December', from: 'weather_date_2i'
-    select '29', from: 'weather_date_3i'
-    fill_in 'Conditions', with: weather.conditions
-    fill_in 'Feel', with: weather.feel
+    select 'Massachusetts', from: "State"
     click_button 'Create New Weather'
 
     expect(page).to have_content 'New weather successfully submitted'
     expect(page).to have_content weather.city
     expect(page).to have_content weather.date.strftime("%B %d %Y")
+    expect(page).to have_css ("span img")
+  end
+
+  scenario 'with invalid city/state' do
+    visit '/weathers/new'
+    fill_in "City", with: "Boston"
+    select 'California', from: "State"
+    click_button 'Create New Weather'
+
+    expect(page).to have_content "Something went wrong with your request. Please check city and state."
   end
 end

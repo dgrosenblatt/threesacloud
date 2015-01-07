@@ -19,11 +19,16 @@ class WeathersController < ApplicationController
     @weather = Weather.new(weather_params)
     @weather.user = current_user
     @weather.date = Date.today
-    @weather.from_api
-    if @weather.save
-      redirect_to weathers_path, notice: "New weather successfully submitted"
-    else
+    if @weather.errors?
+      flash.now[:notice] = "Something went wrong with your request. Please check city and state."
       render :new
+    else
+      @weather.from_api
+      if @weather.save
+        redirect_to weathers_path, notice: "New weather successfully submitted"
+      else
+        render :new
+      end
     end
   end
 
