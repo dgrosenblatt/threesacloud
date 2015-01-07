@@ -6,6 +6,7 @@
       <span class="">
         <a href="/weathers/<%= weather.id %>" class="button radius">
           <%= weather.city %>, <%= weather.date.strftime("%B %d %Y") %>
+          <img src="<%= weather.icon_url %>">
         </a>
       </span>
     </div>
