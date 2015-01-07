@@ -18,6 +18,9 @@ class WeathersController < ApplicationController
   def create
     @weather = Weather.new(weather_params)
     @weather.user = current_user
+    @weather.date = Date.today
+    @weather.get_conditions
+    @weather.get_feel
     if @weather.save
       redirect_to weathers_path, notice: "New weather successfully submitted"
     else
