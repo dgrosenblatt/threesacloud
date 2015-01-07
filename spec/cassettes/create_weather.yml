@@ -1,0 +1,195 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.wunderground.com/api/<WEATHER_API>/conditions/q/MA/Boston.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache/2.2.15 (CentOS)
+      Access-Control-Allow-Origin:
+      - '*'
+      X-Creationtime:
+      - '0.059'
+      Last-Modified:
+      - Wed, 07 Jan 2015 21:16:41 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Wed, 07 Jan 2015 21:18:22 GMT
+      Cache-Control:
+      - max-age=0, no-cache
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 07 Jan 2015 21:18:22 GMT
+      Content-Length:
+      - '2636'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "\n{\n  \"response\": {\n  \"version\":\"0.1\",\n  \"termsofService\":\"http://www.wunderground.com/weather/api/d/terms.html\",\n
+        \ \"features\": {\n  \"conditions\": 1\n  }\n\t}\n  ,\t\"current_observation\":
+        {\n\t\t\"image\": {\n\t\t\"url\":\"http://icons.wxug.com/graphics/wu2/logo_130x80.png\",\n\t\t\"title\":\"Weather
+        Underground\",\n\t\t\"link\":\"http://www.wunderground.com\"\n\t\t},\n\t\t\"display_location\":
+        {\n\t\t\"full\":\"Boston, MA\",\n\t\t\"city\":\"Boston\",\n\t\t\"state\":\"MA\",\n\t\t\"state_name\":\"Massachusetts\",\n\t\t\"country\":\"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"zip\":\"02101\",\n\t\t\"magic\":\"1\",\n\t\t\"wmo\":\"99999\",\n\t\t\"latitude\":\"42.37046814\",\n\t\t\"longitude\":\"-71.02747345\",\n\t\t\"elevation\":\"6.00000000\"\n\t\t},\n\t\t\"observation_location\":
+        {\n\t\t\"full\":\"Southie, Boston, Massachusetts\",\n\t\t\"city\":\"Southie,
+        Boston\",\n\t\t\"state\":\"Massachusetts\",\n\t\t\"country\":\"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"latitude\":\"42.336655\",\n\t\t\"longitude\":\"-71.035561\",\n\t\t\"elevation\":\"33
+        ft\"\n\t\t},\n\t\t\"estimated\": {\n\t\t},\n\t\t\"station_id\":\"KMABOSTO42\",\n\t\t\"observation_time\":\"Last
+        Updated on January 7, 4:16 PM EST\",\n\t\t\"observation_time_rfc822\":\"Wed,
+        07 Jan 2015 16:16:36 -0500\",\n\t\t\"observation_epoch\":\"1420665396\",\n\t\t\"local_time_rfc822\":\"Wed,
+        07 Jan 2015 16:16:41 -0500\",\n\t\t\"local_epoch\":\"1420665401\",\n\t\t\"local_tz_short\":\"EST\",\n\t\t\"local_tz_long\":\"America/New_York\",\n\t\t\"local_tz_offset\":\"-0500\",\n\t\t\"weather\":\"Mostly
+        Cloudy\",\n\t\t\"temperature_string\":\"19.9 F (-6.7 C)\",\n\t\t\"temp_f\":19.9,\n\t\t\"temp_c\":-6.7,\n\t\t\"relative_humidity\":\"68%\",\n\t\t\"wind_string\":\"From
+        the WNW at 13.0 MPH Gusting to 18.0 MPH\",\n\t\t\"wind_dir\":\"WNW\",\n\t\t\"wind_degrees\":290,\n\t\t\"wind_mph\":13.0,\n\t\t\"wind_gust_mph\":\"18.0\",\n\t\t\"wind_kph\":20.9,\n\t\t\"wind_gust_kph\":\"29.0\",\n\t\t\"pressure_mb\":\"1010\",\n\t\t\"pressure_in\":\"29.84\",\n\t\t\"pressure_trend\":\"+\",\n\t\t\"dewpoint_string\":\"11
+        F (-12 C)\",\n\t\t\"dewpoint_f\":11,\n\t\t\"dewpoint_c\":-12,\n\t\t\"heat_index_string\":\"NA\",\n\t\t\"heat_index_f\":\"NA\",\n\t\t\"heat_index_c\":\"NA\",\n\t\t\"windchill_string\":\"7
+        F (-14 C)\",\n\t\t\"windchill_f\":\"7\",\n\t\t\"windchill_c\":\"-14\",\n\t\t\"feelslike_string\":\"7
+        F (-14 C)\",\n\t\t\"feelslike_f\":\"7\",\n\t\t\"feelslike_c\":\"-14\",\n\t\t\"visibility_mi\":\"10.0\",\n\t\t\"visibility_km\":\"16.1\",\n\t\t\"solarradiation\":\"--\",\n\t\t\"UV\":\"0\",\"precip_1hr_string\":\"0.00
+        in ( 0 mm)\",\n\t\t\"precip_1hr_in\":\"0.00\",\n\t\t\"precip_1hr_metric\":\"
+        0\",\n\t\t\"precip_today_string\":\"0.00 in (0 mm)\",\n\t\t\"precip_today_in\":\"0.00\",\n\t\t\"precip_today_metric\":\"0\",\n\t\t\"icon\":\"mostlycloudy\",\n\t\t\"icon_url\":\"http://icons.wxug.com/i/c/k/mostlycloudy.gif\",\n\t\t\"forecast_url\":\"http://www.wunderground.com/US/MA/Boston.html\",\n\t\t\"history_url\":\"http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KMABOSTO42\",\n\t\t\"ob_url\":\"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=42.336655,-71.035561\",\n\t\t\"nowcast\":\"\"\n\t}\n}\n"
+    http_version: 
+  recorded_at: Wed, 07 Jan 2015 21:18:22 GMT
+- request:
+    method: get
+    uri: http://api.wunderground.com/api/<WEATHER_API>/conditions/q/MA/Boston.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache/2.2.15 (CentOS)
+      Access-Control-Allow-Origin:
+      - '*'
+      X-Creationtime:
+      - '0.044'
+      Last-Modified:
+      - Wed, 07 Jan 2015 21:15:57 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Wed, 07 Jan 2015 21:18:22 GMT
+      Cache-Control:
+      - max-age=0, no-cache
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 07 Jan 2015 21:18:22 GMT
+      Content-Length:
+      - '2638'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "\n{\n  \"response\": {\n  \"version\":\"0.1\",\n  \"termsofService\":\"http://www.wunderground.com/weather/api/d/terms.html\",\n
+        \ \"features\": {\n  \"conditions\": 1\n  }\n\t}\n  ,\t\"current_observation\":
+        {\n\t\t\"image\": {\n\t\t\"url\":\"http://icons.wxug.com/graphics/wu2/logo_130x80.png\",\n\t\t\"title\":\"Weather
+        Underground\",\n\t\t\"link\":\"http://www.wunderground.com\"\n\t\t},\n\t\t\"display_location\":
+        {\n\t\t\"full\":\"Boston, MA\",\n\t\t\"city\":\"Boston\",\n\t\t\"state\":\"MA\",\n\t\t\"state_name\":\"Massachusetts\",\n\t\t\"country\":\"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"zip\":\"02101\",\n\t\t\"magic\":\"1\",\n\t\t\"wmo\":\"99999\",\n\t\t\"latitude\":\"42.37046814\",\n\t\t\"longitude\":\"-71.02747345\",\n\t\t\"elevation\":\"6.00000000\"\n\t\t},\n\t\t\"observation_location\":
+        {\n\t\t\"full\":\"Southie, Boston, Massachusetts\",\n\t\t\"city\":\"Southie,
+        Boston\",\n\t\t\"state\":\"Massachusetts\",\n\t\t\"country\":\"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"latitude\":\"42.336655\",\n\t\t\"longitude\":\"-71.035561\",\n\t\t\"elevation\":\"33
+        ft\"\n\t\t},\n\t\t\"estimated\": {\n\t\t},\n\t\t\"station_id\":\"KMABOSTO42\",\n\t\t\"observation_time\":\"Last
+        Updated on January 7, 4:15 PM EST\",\n\t\t\"observation_time_rfc822\":\"Wed,
+        07 Jan 2015 16:15:55 -0500\",\n\t\t\"observation_epoch\":\"1420665355\",\n\t\t\"local_time_rfc822\":\"Wed,
+        07 Jan 2015 16:15:57 -0500\",\n\t\t\"local_epoch\":\"1420665357\",\n\t\t\"local_tz_short\":\"EST\",\n\t\t\"local_tz_long\":\"America/New_York\",\n\t\t\"local_tz_offset\":\"-0500\",\n\t\t\"weather\":\"Mostly
+        Cloudy\",\n\t\t\"temperature_string\":\"19.9 F (-6.7 C)\",\n\t\t\"temp_f\":19.9,\n\t\t\"temp_c\":-6.7,\n\t\t\"relative_humidity\":\"68%\",\n\t\t\"wind_string\":\"From
+        the West at 14.1 MPH Gusting to 18.0 MPH\",\n\t\t\"wind_dir\":\"West\",\n\t\t\"wind_degrees\":279,\n\t\t\"wind_mph\":14.1,\n\t\t\"wind_gust_mph\":\"18.0\",\n\t\t\"wind_kph\":22.7,\n\t\t\"wind_gust_kph\":\"29.0\",\n\t\t\"pressure_mb\":\"1010\",\n\t\t\"pressure_in\":\"29.84\",\n\t\t\"pressure_trend\":\"+\",\n\t\t\"dewpoint_string\":\"11
+        F (-12 C)\",\n\t\t\"dewpoint_f\":11,\n\t\t\"dewpoint_c\":-12,\n\t\t\"heat_index_string\":\"NA\",\n\t\t\"heat_index_f\":\"NA\",\n\t\t\"heat_index_c\":\"NA\",\n\t\t\"windchill_string\":\"7
+        F (-14 C)\",\n\t\t\"windchill_f\":\"7\",\n\t\t\"windchill_c\":\"-14\",\n\t\t\"feelslike_string\":\"7
+        F (-14 C)\",\n\t\t\"feelslike_f\":\"7\",\n\t\t\"feelslike_c\":\"-14\",\n\t\t\"visibility_mi\":\"10.0\",\n\t\t\"visibility_km\":\"16.1\",\n\t\t\"solarradiation\":\"--\",\n\t\t\"UV\":\"0\",\"precip_1hr_string\":\"0.00
+        in ( 0 mm)\",\n\t\t\"precip_1hr_in\":\"0.00\",\n\t\t\"precip_1hr_metric\":\"
+        0\",\n\t\t\"precip_today_string\":\"0.00 in (0 mm)\",\n\t\t\"precip_today_in\":\"0.00\",\n\t\t\"precip_today_metric\":\"0\",\n\t\t\"icon\":\"mostlycloudy\",\n\t\t\"icon_url\":\"http://icons.wxug.com/i/c/k/mostlycloudy.gif\",\n\t\t\"forecast_url\":\"http://www.wunderground.com/US/MA/Boston.html\",\n\t\t\"history_url\":\"http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KMABOSTO42\",\n\t\t\"ob_url\":\"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=42.336655,-71.035561\",\n\t\t\"nowcast\":\"\"\n\t}\n}\n"
+    http_version: 
+  recorded_at: Wed, 07 Jan 2015 21:18:22 GMT
+- request:
+    method: get
+    uri: http://api.wunderground.com/api/<WEATHER_API>/conditions/q/MA/Boston.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache/2.2.15 (CentOS)
+      Access-Control-Allow-Origin:
+      - '*'
+      X-Creationtime:
+      - '0.044'
+      Last-Modified:
+      - Wed, 07 Jan 2015 21:15:57 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      Expires:
+      - Wed, 07 Jan 2015 21:18:22 GMT
+      Cache-Control:
+      - max-age=0, no-cache
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 07 Jan 2015 21:18:22 GMT
+      Content-Length:
+      - '2638'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "\n{\n  \"response\": {\n  \"version\":\"0.1\",\n  \"termsofService\":\"http://www.wunderground.com/weather/api/d/terms.html\",\n
+        \ \"features\": {\n  \"conditions\": 1\n  }\n\t}\n  ,\t\"current_observation\":
+        {\n\t\t\"image\": {\n\t\t\"url\":\"http://icons.wxug.com/graphics/wu2/logo_130x80.png\",\n\t\t\"title\":\"Weather
+        Underground\",\n\t\t\"link\":\"http://www.wunderground.com\"\n\t\t},\n\t\t\"display_location\":
+        {\n\t\t\"full\":\"Boston, MA\",\n\t\t\"city\":\"Boston\",\n\t\t\"state\":\"MA\",\n\t\t\"state_name\":\"Massachusetts\",\n\t\t\"country\":\"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"zip\":\"02101\",\n\t\t\"magic\":\"1\",\n\t\t\"wmo\":\"99999\",\n\t\t\"latitude\":\"42.37046814\",\n\t\t\"longitude\":\"-71.02747345\",\n\t\t\"elevation\":\"6.00000000\"\n\t\t},\n\t\t\"observation_location\":
+        {\n\t\t\"full\":\"Southie, Boston, Massachusetts\",\n\t\t\"city\":\"Southie,
+        Boston\",\n\t\t\"state\":\"Massachusetts\",\n\t\t\"country\":\"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"latitude\":\"42.336655\",\n\t\t\"longitude\":\"-71.035561\",\n\t\t\"elevation\":\"33
+        ft\"\n\t\t},\n\t\t\"estimated\": {\n\t\t},\n\t\t\"station_id\":\"KMABOSTO42\",\n\t\t\"observation_time\":\"Last
+        Updated on January 7, 4:15 PM EST\",\n\t\t\"observation_time_rfc822\":\"Wed,
+        07 Jan 2015 16:15:55 -0500\",\n\t\t\"observation_epoch\":\"1420665355\",\n\t\t\"local_time_rfc822\":\"Wed,
+        07 Jan 2015 16:15:57 -0500\",\n\t\t\"local_epoch\":\"1420665357\",\n\t\t\"local_tz_short\":\"EST\",\n\t\t\"local_tz_long\":\"America/New_York\",\n\t\t\"local_tz_offset\":\"-0500\",\n\t\t\"weather\":\"Mostly
+        Cloudy\",\n\t\t\"temperature_string\":\"19.9 F (-6.7 C)\",\n\t\t\"temp_f\":19.9,\n\t\t\"temp_c\":-6.7,\n\t\t\"relative_humidity\":\"68%\",\n\t\t\"wind_string\":\"From
+        the West at 14.1 MPH Gusting to 18.0 MPH\",\n\t\t\"wind_dir\":\"West\",\n\t\t\"wind_degrees\":279,\n\t\t\"wind_mph\":14.1,\n\t\t\"wind_gust_mph\":\"18.0\",\n\t\t\"wind_kph\":22.7,\n\t\t\"wind_gust_kph\":\"29.0\",\n\t\t\"pressure_mb\":\"1010\",\n\t\t\"pressure_in\":\"29.84\",\n\t\t\"pressure_trend\":\"+\",\n\t\t\"dewpoint_string\":\"11
+        F (-12 C)\",\n\t\t\"dewpoint_f\":11,\n\t\t\"dewpoint_c\":-12,\n\t\t\"heat_index_string\":\"NA\",\n\t\t\"heat_index_f\":\"NA\",\n\t\t\"heat_index_c\":\"NA\",\n\t\t\"windchill_string\":\"7
+        F (-14 C)\",\n\t\t\"windchill_f\":\"7\",\n\t\t\"windchill_c\":\"-14\",\n\t\t\"feelslike_string\":\"7
+        F (-14 C)\",\n\t\t\"feelslike_f\":\"7\",\n\t\t\"feelslike_c\":\"-14\",\n\t\t\"visibility_mi\":\"10.0\",\n\t\t\"visibility_km\":\"16.1\",\n\t\t\"solarradiation\":\"--\",\n\t\t\"UV\":\"0\",\"precip_1hr_string\":\"0.00
+        in ( 0 mm)\",\n\t\t\"precip_1hr_in\":\"0.00\",\n\t\t\"precip_1hr_metric\":\"
+        0\",\n\t\t\"precip_today_string\":\"0.00 in (0 mm)\",\n\t\t\"precip_today_in\":\"0.00\",\n\t\t\"precip_today_metric\":\"0\",\n\t\t\"icon\":\"mostlycloudy\",\n\t\t\"icon_url\":\"http://icons.wxug.com/i/c/k/mostlycloudy.gif\",\n\t\t\"forecast_url\":\"http://www.wunderground.com/US/MA/Boston.html\",\n\t\t\"history_url\":\"http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KMABOSTO42\",\n\t\t\"ob_url\":\"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=42.336655,-71.035561\",\n\t\t\"nowcast\":\"\"\n\t}\n}\n"
+    http_version: 
+  recorded_at: Wed, 07 Jan 2015 21:18:22 GMT
+recorded_with: VCR 2.9.3

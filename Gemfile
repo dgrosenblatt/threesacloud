@@ -56,3 +56,5 @@ gem 'carrierwave'
 gem 'dotenv-rails', group: [:development, :test]
 gem 'fog'
 gem 'pry', group: [:develpment, :test]
+gem 'vcr', group: [:develpment, :test]
+gem 'webmock', group: [:develpment, :test]
