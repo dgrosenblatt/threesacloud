@@ -13,4 +13,5 @@ class Review < ActiveRecord::Base
   def downvotes
     votes.where(choice: "down").length
   end
+    
 end

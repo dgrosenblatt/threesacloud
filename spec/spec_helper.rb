@@ -1,9 +1,13 @@
 require 'coveralls'
 Coveralls.wear!('rails')
+require 'email_spec'
 
 # include CarrierWaveDirect::Test::CapybaraHelpers
 
 RSpec.configure do |config|
+
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
 
   config.expect_with :rspec do |expectations|
 

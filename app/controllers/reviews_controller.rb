@@ -6,7 +6,13 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     @review.weather_id = params[:weather_id]
     @weather = Weather.find(@review.weather_id)
+
     if @review.save
+      # email generated here?
+      @user = User.find(@weather.user_id)
+      UserMailer.review_alert(@user).deliver
+      # binding.pry
+
       redirect_to @review.weather, notice: "Your review has been posted"
     else
       render "weathers/show"

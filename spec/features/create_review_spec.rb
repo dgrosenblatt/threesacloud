@@ -8,8 +8,9 @@ feature "User wants to add a new review to a weather submission " do
 
     end
 
-    scenario "user properly enters a new review"  do
+    scenario "user properly enters a new review" ,focus: true do
       weather = FactoryGirl.create(:weather)
+      ActionMailer::Base.deliveries = []
 
       visit "/weathers/#{weather.id}"
 
@@ -17,6 +18,12 @@ feature "User wants to add a new review to a weather submission " do
       select(2, :from => "Rating")
 
       click_on("Submit")
+
+      expect(ActionMailer::Base.deliveries.size).to eql(1)
+      last_email = ActionMailer::Base.deliveries.last
+      expect(last_email).to deliver_to(User.find(weather.user_id))
+      expect(last_email).to have_subject("A review has been posted to your weather")
+
 
       expect(page).to have_content("Man it's cold!")
       expect(page).to have_content("2")
