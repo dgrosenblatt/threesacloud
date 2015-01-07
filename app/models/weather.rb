@@ -3,12 +3,11 @@ class Weather < ActiveRecord::Base
   has_many :reviews
 
   def self.search(search)
-  if search
-    @weathers = Weather.where('city LIKE ?', "%#{search}%")
-  else
-    @weathers = Weather.all
+    if search
+      @weathers = Weather.where('city LIKE ?', "%#{search}%")
+    else
+      @weathers = Weather.all
+    end
+    @weathers
   end
-  @weathers
-  end
-
 end

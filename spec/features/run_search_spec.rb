@@ -17,8 +17,6 @@ feature 'User searches for a weather', %Q{
 
   end
 
-
-
   scenario 'empty search' do
     weather = FactoryGirl.create(:weather)
 
