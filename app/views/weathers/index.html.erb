@@ -9,16 +9,17 @@
   </div>
 </div>
 <div class="row">
-    <% @weathers.each do |weather| %>
-    <p>
-      <div class="large-3 columns">
-        <span class="">
-          <a href="/weathers/<%= weather.id %>" class="button radius">
-            <%= weather.city %>, <%= weather.date.strftime("%B %d %Y") %>
-          </a>
-        </span>
-      </div>
-    </p>
+  <% @weathers.each do |weather| %>
+  <p>
+    <div class="large-3 columns">
+      <span class="">
+        <a href="/weathers/<%= weather.id %>" class="button radius">
+          <%= weather.city %>, <%= weather.date.strftime("%B %d %Y") %>
+          <img src="<%= weather.icon_url %>">
+        </a>
+      </span>
+    </div>
+  </p>
   <% end %>
 </div>
 

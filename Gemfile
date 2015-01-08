@@ -57,3 +57,5 @@ gem 'dotenv-rails', group: [:development, :test]
 gem 'fog'
 gem 'pry', group: [:develpment, :test]
 gem 'kaminari'
+gem 'vcr', group: [:develpment, :test]
+gem 'webmock', group: [:develpment, :test]
