@@ -23,28 +23,28 @@ http_interactions:
       Access-Control-Allow-Origin:
       - '*'
       X-Creationtime:
-      - '0.024'
+      - '0.028'
       Last-Modified:
-      - Wed, 07 Jan 2015 22:40:57 GMT
+      - Thu, 08 Jan 2015 01:47:09 GMT
       Content-Type:
       - application/json; charset=UTF-8
       Vary:
       - Accept-Encoding
       Expires:
-      - Wed, 07 Jan 2015 22:40:57 GMT
+      - Thu, 08 Jan 2015 01:47:09 GMT
       Cache-Control:
       - max-age=0, no-cache
       Pragma:
       - no-cache
       Date:
-      - Wed, 07 Jan 2015 22:40:57 GMT
+      - Thu, 08 Jan 2015 01:47:09 GMT
       Content-Length:
       - '2324'
       Connection:
       - keep-alive
       Set-Cookie:
-      - DT=1420670457:47967:365-dell-c6; path=/; expires=Fri, 01-Jan-2020 00:00:00
-        GMT; domain=.wunderground.com
+      - DT=1420681629:22014:365-z2; path=/; expires=Fri, 01-Jan-2020 00:00:00 GMT;
+        domain=.wunderground.com
     body:
       encoding: UTF-8
       string: "\n{\n  \"response\": {\n  \"version\":\"0.1\",\n  \"termsofService\":\"http://www.wunderground.com/weather/api/d/terms.html\",\n
@@ -83,7 +83,7 @@ http_interactions:
         \"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"country_name\":\"USA\",\n\t\t\"zmw\":
         \"22713.1.99999\",\n\t\t\"l\": \"/q/zmw:22713.1.99999\"\n\t\t}\n\t\t]\n\t}\n}\n"
     http_version: 
-  recorded_at: Wed, 07 Jan 2015 22:40:56 GMT
+  recorded_at: Thu, 08 Jan 2015 01:47:08 GMT
 - request:
     method: get
     uri: http://api.wunderground.com/api/<WEATHER_API>/conditions/q/CA/Boston.json
@@ -107,21 +107,21 @@ http_interactions:
       Access-Control-Allow-Origin:
       - '*'
       X-Creationtime:
-      - '0.024'
+      - '0.028'
       Last-Modified:
-      - Wed, 07 Jan 2015 22:40:57 GMT
+      - Thu, 08 Jan 2015 01:47:09 GMT
       Content-Type:
       - application/json; charset=UTF-8
       Vary:
       - Accept-Encoding
       Expires:
-      - Wed, 07 Jan 2015 22:40:57 GMT
+      - Thu, 08 Jan 2015 01:47:09 GMT
       Cache-Control:
       - max-age=0, no-cache
       Pragma:
       - no-cache
       Date:
-      - Wed, 07 Jan 2015 22:40:57 GMT
+      - Thu, 08 Jan 2015 01:47:09 GMT
       Content-Length:
       - '2324'
       Connection:
@@ -164,5 +164,5 @@ http_interactions:
         \"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"country_name\":\"USA\",\n\t\t\"zmw\":
         \"22713.1.99999\",\n\t\t\"l\": \"/q/zmw:22713.1.99999\"\n\t\t}\n\t\t]\n\t}\n}\n"
     http_version: 
-  recorded_at: Wed, 07 Jan 2015 22:40:57 GMT
+  recorded_at: Thu, 08 Jan 2015 01:47:08 GMT
 recorded_with: VCR 2.9.3

@@ -36,5 +36,5 @@ require 'vcr'
 
         expect(page).to have_content "Something went wrong with your request. Please check city and state."
       end
-    end
+      end
   end
