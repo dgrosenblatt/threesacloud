@@ -59,3 +59,4 @@ gem 'pry', group: [:develpment, :test]
 gem 'kaminari'
 gem 'vcr', group: [:develpment, :test]
 gem 'webmock', group: [:develpment, :test]
+gem 'email_spec', group: [:development, :test]
