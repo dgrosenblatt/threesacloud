@@ -31,21 +31,47 @@
       </ul>
     </section>
   </nav>
+  <div class ="row">
+    <div class="large-3 columns ">
+      <div class="panel">
+        <a href="#"><img src="http://placehold.it/300x240&text=[img]"/></a>
+        <h5><a href="#">Your Name</a></h5>
+        <div class="section-container vertical-nav" data-section data-options="deep_linking: false; one_up: true">
+          <section class="section">
+            <h5 class="title"><a href="#">Section 1</a></h5>
+          </section>
+          <section class="section">
+            <h5 class="title"><a href="#">Section 2</a></h5>
+          </section>
+          <section class="section">
+            <h5 class="title"><a href="#">Section 3</a></h5>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="large-9 columns">
+      <div class="row">
 
+    <%= yield %>
+
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_tag do %>
+    $(function(){
+      $(document).foundation();
+    });
+    <% end %>
+    <%= yield :extra_footer %>
+  </div>
+</div>
+
+  </div>
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
       <%= value %>
     </div>
   <%- end -%>
-  
-  <%= yield %>
 
-  <%= javascript_include_tag 'application' %>
-  <%= javascript_tag do %>
-    $(function(){
-      $(document).foundation();
-    });
-  <% end %>
-  <%= yield :extra_footer %>
+
+
 </body>
 </html>

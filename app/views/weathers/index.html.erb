@@ -1,26 +1,27 @@
-<div class ="row">
-  <div class="small-4 small-offset-4 columns" >
-    <%= form_tag weathers_path, :method => 'get' do %>
-    <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", :name => nil %>
-    </p>
-  <% end %>
-  </div>
+
+<% @weathers.each do |weather| %>
+<div class="large-2 columns small-3"><img src="<%= weather.icon_url %>"/></div>
+<div class="large-10 columns">
+  <p><strong><%= weather.city %>, <%= weather.date.strftime("%B %d %Y") %> </strong> <%= weather.conditions %>, <%= weather.feel %> </p>
+  <ul class="inline-list">
+    <li><a href="weathers/<%= params[:id] %>/edit">Edit</a></li>
+    <li><a href="weathers/<%= params[:id] %>">Leave Comment</a></li>
+  </ul>
 </div>
+
 <div class="row">
-  <% @weathers.each do |weather| %>
+  <% weather.reviews.each do |review|%>
+  <div class="large-2 columns small-3"><%= review.rating %></div>
+  <div class="large-10 columns"><p><%= review.comment %></p></div>
+</div>
+<% end %>
+<% end %>
+<div class="small-4 small-offset-4 columns" >
+  <%= form_tag weathers_path, :method => 'get' do %>
   <p>
-    <div class="large-3 columns">
-      <span class="">
-        <a href="/weathers/<%= weather.id %>" class="button radius">
-          <%= weather.city %>, <%= weather.date.strftime("%B %d %Y") %>
-          <img src="<%= weather.icon_url %>">
-        </a>
-      </span>
-    </div>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
   </p>
   <% end %>
 </div>
-
 <nav align ="center"><%= paginate @weathers %></nav>

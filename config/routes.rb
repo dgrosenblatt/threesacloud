@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'weathers#index'
+  root 'weathers#welcome'
   devise_for :users
   resources :weathers do
     resources :reviews

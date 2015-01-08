@@ -23,39 +23,46 @@
 
 <% end %>
 <div id="weather_reviews">
-
+<table>
+  <tr><th>Comment</th><th>Rating</th></tr>
+  <tr>
     <% @reviews.each do |review| %>
-      <%= review.comment %>
-      <%= review.rating %>
-       <%= link_to "Edit Review", edit_weather_review_path(@weather, review) %>
-       <% if !current_user.nil? && (review.user == current_user || current_user.admin?) %>
-          <%= link_to 'Delete', [@weather, review] , method: :delete, data: { confirm: 'Are you sure?' } %>
+      <td><%= review.comment %></td>
+      <td><%= review.rating %></td>
+      <td><%= link_to "Edit Review", edit_weather_review_path(@weather, review) %></td>
+      <% if !current_user.nil? && (review.user == current_user || current_user.admin?) %>
+      <td><%= link_to 'Delete', [@weather, review] , method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       <br>
 
-      <nav><%= paginate @reviews%></nav>
-
         <%= form_for [review, @vote] do |f| %>
-          <%= f.hidden_field :choice, value: "up" %>
-          <%= f.submit "Upvote" %>
+        <%= f.hidden_field :choice, value: "up" %>
+          <td><%= f.submit "Upvote",:class => "button tiny" %></td>
         <% end %>
         <%= form_for [review, @vote] do |f| %>
           <%= f.hidden_field :choice, value: "down" %>
-          <%= f.submit "Downvote" %>
+          <td><%= f.submit "Downvote",:class => "button tiny" %></td>
         <% end %>
 
-      <p>+<%= review.upvotes %> | -<%= review.downvotes %></p>
+
+      <td><p>+<%= review.upvotes %> | -<%= review.downvotes %></p></td>
 
       <% review.votes.each do |vote| %>
         <% if vote.user == current_user %>
           <p>
-            <%= link_to 'Delete my vote', [review, vote], method: :delete, data: { confirm: 'Are you sure?' } %> |
-            <%= link_to 'Change my vote', [review, vote], method: :put %>
+            <td><%= link_to 'Delete my vote', [review, vote], method: :delete, data: { confirm: 'Are you sure?' } %> |
+            <%= link_to 'Change my vote', [review, vote], method: :put %></td>
           </p>
-        <% end %>
-      <% end %>
-      <% end %>
+          <% end %>
+          <% end %>
+    </tr>
 
+
+    <% end %>
+    <tr>
+      <nav><%= paginate @reviews%></nav>
+    </tr>
+  </table>
 </div>
 
 <p><a href="/weathers">Back</a></p>
