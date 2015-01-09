@@ -4,18 +4,16 @@ Rails.application.configure do
   # Also to use the following: heroku config:get SENDGRID_USERNAME
   # heroku config:get SENDGRID_PASSWORD
 
-  config.action_mailer.default_url_options = {host: 'http://threesacloud.herokuapp.com'}
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: 'smtp.sendgrid.net',
-    port: 587,
-    authentication: :plain,
-    user_name: ENV['SENDGRID_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD'],
-    domain: 'heroku.com',
-    enable_starttls_auto: true
-  }
-
+  Threesacloud::Application.configure do
+    config.action_mailer.smtp_settings = {
+      :address   => "smtp.mandrillapp.com",
+      :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
+      :enable_starttls_auto => true, # detects and uses STARTTLS
+      :user_name => ENV["MANDRILL_USERNAME"],
+      :password  => ENV["MANDRILL_PASSWORD"], # SMTP password is any valid API key
+      :authentication => 'login', # Mandrill supports 'plain' or 'login'
+      :domain => 'threesacloud.herokuapp.com', # your domain to identify your server when connecting
+    }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
