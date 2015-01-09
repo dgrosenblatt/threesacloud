@@ -7,12 +7,12 @@ feature 'User views all weathers', %Q{
   } do
 
   scenario 'from the index page' do
-    FactoryGirl.create_list(:weather, 10)
+    FactoryGirl.create_list(:weather, 7)
 
     visit '/weathers'
 
     expect(page).to have_content "Boston"
-    page.should have_css("span a", count: 9)
+    page.should have_css("p strong", count: 4)
     expect(page).to have_content "Next"
 
   end

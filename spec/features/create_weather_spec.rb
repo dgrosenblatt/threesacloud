@@ -20,7 +20,7 @@ require 'vcr'
 
       expect(page).to have_content weather.city
       expect(page).to have_content weather.date.strftime("%B %d %Y")
-      expect(page).to have_css ("span img")
+      expect(page).to have_css ("div img")
     end
 
     scenario 'with invalid city/state' do

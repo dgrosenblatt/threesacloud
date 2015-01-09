@@ -16,36 +16,76 @@
 
     <section class="top-bar-section">
       <ul class="left">
-        <li><a href="/weathers/new" class="">Add today's weather!</a></li>
+        <li class="has-form">
+          <div class="row collapse">
+            <div class="large-8 small-9 columns">
+              <%= form_tag weathers_path, :method => 'get' do %>
+              <%= text_field_tag :search, params[:search] %></div>
+            <div class="large-4 small-3 columns">
+              <%= submit_tag "Search", :name => nil, :class =>"alert button expand" %>
+              <% end %>
+            </div>
+          </div>
+        </li>
+        <li><a href="/weathers/new" class="button">Add today's weather!</a></li>
       </ul>
       <ul class="right">
 
         <%- if current_user -%>
           <li><img src="<%= current_user.profile_photo %>" width="50" height="50"></li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-          <li><%= link_to 'Edit Profile', edit_user_registration_path(@user) %></li>
+          <li class="divider"></li>
+          <li><%= link_to 'Edit Profile', edit_user_registration_path(@user)%></li>
         <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li><%= link_to 'Sign Up', new_user_registration_path%></li>
+          <li class="divider"></li>
           <li><%= link_to 'Sign In', new_user_session_path %></li>
         <%- end -%>
       </ul>
     </section>
   </nav>
-
-  <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
+<div class = "row">
+  <div class="large-3 columns ">
+    <div class="panel">
+      <a href="/"><img src="/weather.jpg" ></a>
+      <div class="section-container vertical-nav" data-section="" data-options="deep_linking: false; one_up: true">
+        <section class="section">
+          <h5 class="title"><p>Please take a couple minutes to share weather conditions in your location or/and add a comment about some other conditions</p></h5>
+        </section>
+        <section class="section">
+          <h3 ><p>We love weather talk and appreciate your input!!!</p></h3>
+        </section>
+      </div>
     </div>
+  </div>
+  <%- flash.each do |key, value| -%>
+  <div class="flash flash-<%= key %>">
+    <%= value %>
+  </div>
   <%- end -%>
-  
+
   <%= yield %>
 
   <%= javascript_include_tag 'application' %>
   <%= javascript_tag do %>
-    $(function(){
-      $(document).foundation();
-    });
+  $(function(){
+    $(document).foundation();
+  });
   <% end %>
   <%= yield :extra_footer %>
+
+    <aside class="large-3 columns hide-for-small">
+      <p></p>
+      <div class="panel callout radius">
+        <p><h2 align="center">KEEP</H2></p>
+        <p><h2 align="center">CALM</H2></p>
+        <p ><h2 align="center">and</h2></p>
+        <p ><h2 align="center">LEARN</h2></p>
+        <p ><h2 align="center">RAILS</h2></p>
+      </DIV>
+    <p><img src="/logo.jpg"></p>
+    </aside>
+</div>
+
 </body>
 </html>

@@ -8,8 +8,8 @@ feature "User deletes a vote" do
     login_as(@user)
 
     visit "/weathers/#{@weather.id}"
-    click_button "Upvote"
-    click_link "Delete my vote"
+    click_button "+"
+    click_link "UnVote"
 
     expect(page).to have_content "Vote Deleted"
     expect(page).not_to have_content "+1"

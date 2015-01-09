@@ -8,8 +8,8 @@ feature "User updates a vote" do
     login_as(@user)
 
     visit "/weathers/#{@weather.id}"
-    click_button "Upvote"
-    click_link "Change my vote"
+    click_button "+"
+    click_link "ReVote"
 
     expect(page).to have_content "Vote Changed"
     expect(page).to have_content "-1"

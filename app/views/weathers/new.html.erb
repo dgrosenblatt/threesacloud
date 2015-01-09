@@ -1,16 +1,17 @@
-<div class="row">
-  <%= form_for @weather do |f| %>
-  <div class="small-4 small-offset-4 columns">
+<div class="large-6 columns">
+  <div class="row">
+<%= form_for @weather do |f| %>
+
     <%= f.label :city, 'City' %>
     <%= f.text_field :city %>
 
     <%= f.label :state, 'State' %>
     <%= f.select :state, options_for_select(us_states) %>
 
-    <%= f.submit 'Create New Weather' %>
-  </div>
-  <% end %>
+    <%= f.submit 'Create New Weather', :class => "button tiny" %>
+
+<% end %>
+
+<div><a href="/weathers">Back</a></div>
 </div>
-
-
-<a href="/weathers">Back</a>
+</div>

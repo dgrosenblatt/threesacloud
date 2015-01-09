@@ -1,61 +1,74 @@
-<h1><%= @weather.city %>, <%= @weather.state %>, <%= @weather.date.strftime("%B %d %Y") %></h1>
-<h4><%= @weather.conditions %>, <%= @weather.feel %></h4>
+<div class="large-6 columns">
+  <div class="row">
+    <h1><%= @weather.city %>, <%= @weather.state %>, <%= @weather.date.strftime("%B %d %Y") %></h1>
+    <h4><%= @weather.conditions %>, <%= @weather.feel %></h4>
 
-<% if !current_user.nil? && (current_user.admin? || @weather.user == current_user) %>
-  <%= link_to 'Delete', @weather, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+    <% if !current_user.nil? && (current_user.admin? || @weather.user == current_user) %>
+    <%= link_to 'Delete weather', @weather, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
 
-<% if @review.errors.any? %>
-  <% @review.errors.full_messages.each do |msg| %>
+    <% if @review.errors.any? %>
+    <% @review.errors.full_messages.each do |msg| %>
     <%= msg %>
-  <% end %>
-<% end %>
+    <% end %>
+    <% end %>
 
-<%= form_for [@weather, @review] do |r| %>
+    <%= form_for [@weather, @review] do |r| %>
 
-  <%= r.label :rating, "Rating" %>
-  <%= r.select :rating, options_for_select(%w[1 2 3 4 5]) %>
+    <%= r.label :rating, "Rating" %>
+    <%= r.select :rating, options_for_select(%w[1 2 3 4 5]) %>
 
-  <%= r.label :comment, "Comment" %>
-  <%= r.text_area :comment %>
+    <%= r.label :comment, "Comment" %>
+    <%= r.text_area :comment %>
 
-  <%= r.submit "Submit" %>
+    <%= r.submit "Submit", :class => "tiny button" %>
 
-<% end %>
-<div id="weather_reviews">
+    <% end %>
+    <div id="weather_reviews">
+      <table>
+        <tr><th>Comment</th><th>Rating</th></tr>
+        <tr>
+          <% @reviews.each do |review| %>
+        <tr><td><%= review.comment %></td></tr>
+        <tr>
+          <td><%= link_to "Edit Review", edit_weather_review_path(@weather, review) %></td>
+          <td><%= review.rating %></td>
+          <% if !current_user.nil? && (review.user == current_user || current_user.admin?) %>
+          <td><%= link_to 'Delete', [@weather, review] , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+          <br>
 
-    <% @reviews.each do |review| %>
-      <%= review.comment %>
-      <%= review.rating %>
-       <%= link_to "Edit Review", edit_weather_review_path(@weather, review) %>
-       <% if !current_user.nil? && (review.user == current_user || current_user.admin?) %>
-          <%= link_to 'Delete', [@weather, review] , method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-      <br>
-
-      <nav><%= paginate @reviews%></nav>
-
-        <%= form_for [review, @vote] do |f| %>
+          <%= form_for [review, @vote] do |f| %>
           <%= f.hidden_field :choice, value: "up" %>
-          <%= f.submit "Upvote" %>
-        <% end %>
-        <%= form_for [review, @vote] do |f| %>
+          <td><%= f.submit "+",:class => "button tiny" %></td>
+          <% end %>
+          <%= form_for [review, @vote] do |f| %>
           <%= f.hidden_field :choice, value: "down" %>
-          <%= f.submit "Downvote" %>
-        <% end %>
+          <td><%= f.submit "-",:class => "button tiny" %></td>
+          <% end %>
 
-      <p>+<%= review.upvotes %> | -<%= review.downvotes %></p>
 
-      <% review.votes.each do |vote| %>
-        <% if vote.user == current_user %>
-          <p>
-            <%= link_to 'Delete my vote', [review, vote], method: :delete, data: { confirm: 'Are you sure?' } %> |
-            <%= link_to 'Change my vote', [review, vote], method: :put %>
-          </p>
-        <% end %>
-      <% end %>
-      <% end %>
+          <td><p>+<%= review.upvotes %>|-<%= review.downvotes %></p></td>
 
+          <% review.votes.each do |vote| %>
+            <% if vote.user == current_user %>
+              <p>
+                <td><%= link_to 'UnVote', [review, vote], method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'ReVote', [review, vote], method: :put %></td>
+              </p>
+            <% end %>
+          <% end %>
+
+
+
+          <% end %>
+        </tr>
+          <tr>
+            <nav><%= paginate @reviews%></nav>
+          </tr>
+        </table>
+      </div>
+
+      <p><a href="/weathers">Back</a></p>
+  </div>
 </div>
-
-<p><a href="/weathers">Back</a></p>

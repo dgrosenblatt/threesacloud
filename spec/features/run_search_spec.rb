@@ -17,12 +17,15 @@ feature 'User searches for a weather', %Q{
 
   end
 
-  scenario 'empty search' do
+  scenario 'invalid search' do
     weather = FactoryGirl.create(:weather)
+    user = FactoryGirl.create(:user)
+    login_as(user)
 
-    visit weathers_path
-    fill_in "search", with: "New York"
-    click_on "Search"
+    visit edit_user_registration_path(user)
+    fill_in "search", with: "asdf"
+    click_button "Search"
+    save_and_open_page
 
     expect(page).not_to have_content weather.city
 
