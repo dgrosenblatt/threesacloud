@@ -25,8 +25,7 @@ feature 'User searches for a weather', %Q{
     visit edit_user_registration_path(user)
     fill_in "search", with: "asdf"
     click_button "Search"
-    save_and_open_page
-
+    
     expect(page).not_to have_content weather.city
 
   end

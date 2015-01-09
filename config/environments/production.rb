@@ -1,4 +1,21 @@
 Rails.application.configure do
+  # Mail production settings
+  # Remember to use 'herokue addons:add sendgrid:starter' to heroku from the cmdline
+  # Also to use the following: heroku config:get SENDGRID_USERNAME
+  # heroku config:get SENDGRID_PASSWORD
+
+  config.action_mailer.default_url_options = {host: 'http://threesacloud.herokuapp.com'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    authentication: :plain,
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD'],
+    domain: 'heroku.com',
+    enable_starttls_auto: true
+  }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
