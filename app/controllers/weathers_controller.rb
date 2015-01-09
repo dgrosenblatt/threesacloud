@@ -9,7 +9,7 @@ class WeathersController < ApplicationController
     if params[:search]
       @weathers = Weather.search(params[:search]).order(:date).page params[:page]
     else
-      @weathers = Weather.order(:date).page params[:page]
+      @weathers = Weather.order(date: :desc).page params[:page]
     end
   end
 
