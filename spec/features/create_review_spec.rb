@@ -18,12 +18,17 @@ feature "User wants to add a new review to a weather submission " do
 
       visit "/weathers/#{@weather.id}"
 
-      fill_in "Comment", with: "Man it's cold!"
+      fill_in "Comment", with: "Man it's cold! Mother of god,
+        why do I have to add another 100 characters to this review?
+        Seriously now I'm just typing to make that limit!"
+
       select(2, from: "Rating")
 
       click_on("Submit")
 
-      expect(page).to have_content("Man it's cold!")
+      expect(page).to have_content("Man it's cold! Mother of god,
+      why do I have to add another 100 characters to this review?
+        Seriously now I'm just typing to make that limit!")
       expect(page).to have_content("2")
     end
 
@@ -47,7 +52,9 @@ feature "User wants to add a new review to a weather submission " do
 
         visit "/weathers/#{@weather.id}"
 
-        fill_in "Comment", with: "Man it's cold!"
+        fill_in "Comment", with: "Man it's cold! Mother of god,
+        why do I have to add another 100 characters to this review?
+          Seriously now I'm just typing to make that limit!"
         select(2, from: "Rating")
 
         click_on("Submit")
