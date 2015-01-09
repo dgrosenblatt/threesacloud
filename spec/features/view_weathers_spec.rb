@@ -12,7 +12,7 @@ feature 'User views all weathers', %Q{
     visit '/weathers'
 
     expect(page).to have_content "Boston"
-    page.should have_css("span a", count: 4)
+    page.should have_css("p strong", count: 4)
     expect(page).to have_content "Next"
 
   end

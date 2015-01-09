@@ -31,8 +31,8 @@ feature 'Voting on a review', %{
 
   scenario "voting more than once" do
     visit "/weathers/#{@review.weather_id}"
-    click_on 'Upvote'
-    click_on 'Upvote'
+    click_on '+'
+    click_on '+'
 
     expect(page).to have_content "You have already voted on that review"
   end
