@@ -3,7 +3,7 @@ class Review < ActiveRecord::Base
   belongs_to :weather
   has_many :votes
 
-  validates :comment, presence: true
+  validates :comment, presence: true, length: {minimum: 100}
   validates :rating, presence: true
 
   paginates_per 10
@@ -15,5 +15,5 @@ class Review < ActiveRecord::Base
   def downvotes
     votes.where(choice: "down").length
   end
-    
+
 end
