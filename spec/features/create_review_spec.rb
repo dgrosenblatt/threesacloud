@@ -12,7 +12,7 @@ feature "User wants to add a new review to a weather submission " do
       As a registered user
       I want post a review
       So that I can share my opinion with other people
-      }, focus: true do
+      } do
       @weather = FactoryGirl.create(:weather)
       ActionMailer::Base.deliveries = []
 
@@ -41,7 +41,7 @@ feature "User wants to add a new review to a weather submission " do
       As a registered user
       I want to be notified when someone posts a review
       So that I can read that review
-      }, focus: true do
+      } do
         @weather = FactoryGirl.create(:weather)
         ActionMailer::Base.deliveries = []
 

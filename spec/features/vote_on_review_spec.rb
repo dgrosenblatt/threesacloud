@@ -15,7 +15,7 @@ feature 'Voting on a review', %{
 
   scenario 'upvoting a review' do
     visit "/weathers/#{@review.weather_id}"
-    click_on 'Upvote'
+    click_on '+'
 
     expect(page).to have_content "+1"
     expect(page).to have_content "Thank you for voting."
@@ -23,7 +23,7 @@ feature 'Voting on a review', %{
 
   scenario 'downvoting a review' do
     visit "/weathers/#{@review.weather_id}"
-    click_on 'Downvote'
+    click_on '-'
 
     expect(page).to have_content "-1"
     expect(page).to have_content "Thank you for voting."

@@ -1,21 +1,25 @@
-<h1>All Users</h1>
+<div class="large-6 columns">
+  <div class="row">
+    <h1>All Users</h1>
 
-<% @users.each do |user| %>
-  <div>
-    <h4>
-      <%= user.email %>
-    </h4>
-    <p>
-      Signed up <%= time_ago_in_words(user.created_at) %> ago.
-    </p>
-    <% unless user.last_sign_in_at.nil? %>
-      <p>
-        Last signed in <%= time_ago_in_words(user.last_sign_in_at) %> ago.
-      </p>
+    <% @users.each do |user| %>
+      <div>
+        <h4>
+          <%= user.email %>
+        </h4>
+        <p>
+          Signed up <%= time_ago_in_words(user.created_at) %> ago.
+        </p>
+        <% unless user.last_sign_in_at.nil? %>
+          <p>
+            Last signed in <%= time_ago_in_words(user.last_sign_in_at) %> ago.
+          </p>
+        <% end %>
+        <p>
+          <%= link_to "Delete account for #{user.email}", admin_user_path(user),
+              method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
+      </div>
     <% end %>
-    <p>
-      <%= link_to "Delete account for #{user.email}", admin_user_path(user),
-          method: :delete, data: { confirm: 'Are you sure?' } %>
-    </p>
   </div>
-<% end %>
+</div>

@@ -17,7 +17,7 @@ feature 'User searches for a weather', %Q{
 
   end
 
-  scenario 'empty search' do
+  scenario 'invalid search' do
     weather = FactoryGirl.create(:weather)
 
     visit weathers_path

@@ -2,10 +2,10 @@ class Weather < ActiveRecord::Base
   belongs_to :user
   has_many :reviews
 
-  paginates_per 6
+  paginates_per 4
 
   def self.search(search)
-      @weathers = Weather.where('city LIKE ?', "%#{search}%")
+      @weathers = Weather.where('city ILIKE ?', "%#{search}%")
   end
 
   validates :city, presence: true
