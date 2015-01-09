@@ -14,6 +14,8 @@ Rails.application.configure do
       :authentication => 'login', # Mandrill supports 'plain' or 'login'
       :domain => 'threesacloud.herokuapp.com', # your domain to identify your server when connecting
     }
+
+  end
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
