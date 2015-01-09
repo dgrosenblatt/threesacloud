@@ -10,6 +10,7 @@ class Weather < ActiveRecord::Base
 
   validates :city, presence: true
   validates :state, presence: true
+  validates :city, uniqueness: {scope: [:date, :state]}
 
   def connect_api
     query = "http://api.wunderground.com/api/#{ENV["WEATHER_API"]}/conditions/q/#{self.state}/#{self.city}.json"

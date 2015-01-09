@@ -19,7 +19,7 @@ FactoryGirl.define do
   end
 
   factory :review do
-    sequence(:comment) { |n| "#{n}comment" }
+    sequence(:comment) { |n| "#{n}n addition, we’ve added a Git version warning in Toolbelt that will prompt you to update Git if you’re using a vulnerable version on Windows (shown here) or OS X:" }
     rating 5
     weather
     user

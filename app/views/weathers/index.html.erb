@@ -1,4 +1,4 @@
-<div class="large-6 columns">
+<div class="large-9 columns">
   <div class="row">
     <% @weathers.each do |weather|%>
     <div class="large-2 columns small-3"><img src="<%= weather.icon_url %>"/></div>
@@ -14,7 +14,7 @@
         <% weather.reviews.each do |review|%>
 
         <div class="row">
-          <div class="large-2 columns small-3"><img src="<%= review.user.profile_photo %>"/></div>
+          <div class="large-2 columns small-5"><img src="/rating/<%=review.rating%>_stars.png"/></div>
           <div class="large-10 columns"><p><%= review.comment %></p></div>
         </div>
       <%end%>

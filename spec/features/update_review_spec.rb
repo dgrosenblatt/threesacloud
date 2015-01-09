@@ -15,7 +15,7 @@ feature "User updates an existing review", %{
     visit "/weathers/#{review.weather_id}"
     click_on "Edit Review"
 
-    fill_in "Comment", with: "Updated comment"
+    fill_in "Comment", with: "Updated comment Heroku has updated the Git installer that we ship with Toolbelt for Windows. We have also removed an old Git version from the OS X installer"
     click_on "Submit"
 
     expect(page).to have_content "Review successfully updated"
